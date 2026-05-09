@@ -44,90 +44,15 @@ html, body, [class*="css"] { font-family: 'DM Sans', sans-serif !important; }
 [data-testid="stSidebar"] { background: #0d0d0d !important; border-right: 1px solid #c8960020 !important; }
 [data-testid="stSidebar"] > div:first-child { padding-top: 2rem !important; }
 
-/* Fix sidebar collapse button visibility - CRITICAL */
-/* Create a permanent visible button when sidebar is collapsed */
-.stApp::before {
-    content: '☰';
-    position: fixed !important;
-    left: 0 !important;
-    top: 0.5rem !important;
-    background: #c89600 !important;
-    color: #0a0a0a !important;
-    padding: 0.75rem 1rem !important;
-    border-radius: 0 4px 4px 0 !important;
-    cursor: pointer !important;
-    z-index: 999999 !important;
-    font-size: 1.5rem !important;
-    line-height: 1 !important;
-    display: none !important;
-    visibility: hidden !important;
-}
-/* Show the button only when sidebar is collapsed */
-.stApp:has([data-testid="stSidebar"][aria-expanded="false"])::before,
-.stApp:not(:has([data-testid="stSidebar"]))::before {
-    display: block !important;
-    visibility: visible !important;
-}
-
-[data-testid="collapsedControl"] { 
-    display: flex !important; 
-    visibility: visible !important; 
-    opacity: 1 !important;
-    z-index: 999999 !important;
-    position: fixed !important;
-    left: 0 !important;
-    top: 0.5rem !important;
-    background: #c89600 !important;
-    padding: 0.5rem !important;
-    border-radius: 0 4px 4px 0 !important;
-    cursor: pointer !important;
-    pointer-events: all !important;
-}
-[data-testid="collapsedControl"] * {
-    display: flex !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-}
-[data-testid="collapsedControl"]:hover {
-    background: #f0c040 !important;
-}
-button[kind="header"] { 
-    display: flex !important; 
-    visibility: visible !important; 
-    opacity: 1 !important;
-    z-index: 999999 !important;
-    pointer-events: all !important;
-}
-[data-testid="stSidebarNav"] button {
-    display: flex !important;
-    visibility: visible !important;
-    pointer-events: all !important;
-}
-section[data-testid="stSidebar"] button[kind="header"] {
-    display: flex !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    pointer-events: all !important;
-}
-/* Ensure sidebar chevron is always visible */
-svg[data-testid="stSidebarNavSeparator"] {
-    display: block !important;
-    visibility: visible !important;
-}
-button[aria-label*="sidebar"] {
-    display: flex !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    z-index: 999999 !important;
-    pointer-events: all !important;
-}
-/* Override any display:none on collapse button */
-[data-testid="collapsedControl"][style*="display: none"] {
-    display: flex !important;
-}
-[data-testid="collapsedControl"][style*="visibility: hidden"] {
-    visibility: visible !important;
-}
+/* Hide sidebar collapse button to prevent collapsing */
+[data-testid="stSidebar"] button[kind="header"] { display: none !important; visibility: hidden !important; }
+[data-testid="collapsedControl"] { display: none !important; visibility: hidden !important; }
+section[data-testid="stSidebar"] > button { display: none !important; visibility: hidden !important; }
+[data-testid="stSidebar"] > button:first-child { display: none !important; visibility: hidden !important; }
+button[aria-label="Close sidebar"] { display: none !important; visibility: hidden !important; }
+button[aria-label="Collapse sidebar"] { display: none !important; visibility: hidden !important; }
+[data-testid="baseButton-header"] { display: none !important; visibility: hidden !important; }
+[data-testid="stSidebar"] [data-testid="baseButton-header"] { display: none !important; visibility: hidden !important; }
 
 [data-testid="stSidebar"] .stMarkdown p,
 [data-testid="stSidebar"] label,
